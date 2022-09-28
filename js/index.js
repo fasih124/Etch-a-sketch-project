@@ -19,19 +19,34 @@ function createGrid(num) {
 
 createGrid(size);
 
-const sizeBtn = document.querySelector("#size");
-sizeBtn.addEventListener("click", () => {
-  let userSize = prompt("Enter the Size of Grid(1-100): ");
-  if (userSize <= 0 || userSize > 100) {
-    alert("invalid Size(setting Size 16)");
-    userSize = 16;
-  }
-  size = Number(userSize);
+function removeRows() {
   const removedivs = document.querySelectorAll(".row");
   removedivs.forEach((div) => {
     container.removeChild(div);
   });
+}
+
+const sizeBtn = document.querySelector("#size");
+sizeBtn.addEventListener("click", () => {
+  let userSize = prompt("Enter the Size of Grid(1-100): ");
+  if (userSize <= 0 || userSize > 100 || userSize == String) {
+    alert("invalid Size :(set Size 16)");
+    userSize = 16;
+  }
+  size = Number(userSize);
+  removeRows();
   createGrid(size);
 });
 
 // buttons
+
+const reset = document.querySelector("#Reset");
+const GrayScale = document.querySelector("#GrayScale");
+const randomColor = document.querySelector("#ranColor");
+
+//btn functions
+
+reset.addEventListener("click", () => {
+  removeRows();
+  createGrid(size);
+});
