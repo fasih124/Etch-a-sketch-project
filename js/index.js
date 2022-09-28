@@ -58,8 +58,10 @@ reset.addEventListener("click", () => {
 randomColor.addEventListener("click", () => {
   const rowdivs = document.querySelectorAll(".box");
   rowdivs.forEach((div) => {
-    let randomBgColor = `hsl(${Math.floor(Math.random() * 360)},100%,50%)`;
-    div.addEventListener("mouseover", () => {
+    let randomBgColor = `rgb(${Math.floor(Math.random() * 255)},${Math.floor(
+      Math.random() * 255
+    )},${Math.floor(Math.random() * 255)}`;
+    div.addEventListener("mouseover", (e) => {
       div.style.backgroundColor = randomBgColor;
     });
   });
@@ -71,6 +73,7 @@ resetColor.addEventListener("click", () => {
     color = "#000000";
     div.addEventListener("mouseover", () => {
       div.style.backgroundColor = color;
+      div.style.opacity = `1`;
     });
   });
 });
