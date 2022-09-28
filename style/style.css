@@ -13,4 +13,51 @@ html {
 body {
   box-sizing: border-box;
   font-size: 1.6rem;
+  background-color: whitesmoke;
+  color: #5e5e5e;
+}
+
+.container {
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  width: 96rem;
+  height: 45rem;
+  flex-grow: 0;
+  overflow: hidden;
+  padding: 2rem;
+  background-color: #5e5e5e;
+}
+
+h1 {
+  margin: 1.8rem;
+  display: flex;
+  justify-content: center;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.buttons button {
+  color: whitesmoke;
+  background-color: #5e5e5e;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 1rem;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.8);
+  margin: 1rem;
+}
+
+.container div {
+  background-color: #fff;
+  flex: 1 1 100%;
+  /* border: black 2px solid; */
+  display: flex;
+}
+
+.row div {
+  height: 100%;
+  flex: 1 1 100%;
 }
