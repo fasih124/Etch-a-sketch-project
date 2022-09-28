@@ -7,6 +7,7 @@ const sizeBtn = document.querySelector("#size");
 const reset = document.querySelector("#Reset");
 const resetColor = document.querySelector("#resetColor");
 const randomColor = document.querySelector("#ranColor");
+const grayScale = document.querySelector("#grayScale");
 
 // start functions
 
@@ -38,14 +39,15 @@ function createGrid(num) {
 createGrid(size);
 
 sizeBtn.addEventListener("click", () => {
-  let userSize = prompt("Enter the Size of Grid(1-100): ");
-  if (userSize <= 0 || userSize > 100 || userSize == String) {
-    alert("invalid Size :(set Size 16)");
-    userSize = 16;
+  let userSize = prompt("Enter the Size of Grid(2-100): ");
+  if (userSize <= 1 || userSize > 100 || userSize == String) {
+    alert("invalid Size");
+    // userSize = 16;
+  } else {
+    size = Number(userSize);
+    removeRows();
+    createGrid(size);
   }
-  size = Number(userSize);
-  removeRows();
-  createGrid(size);
 });
 
 //btn functions
@@ -74,6 +76,16 @@ resetColor.addEventListener("click", () => {
     div.addEventListener("mouseover", () => {
       div.style.backgroundColor = color;
       div.style.opacity = `1`;
+    });
+  });
+});
+
+grayScale.addEventListener("click", () => {
+  const rowdivs = document.querySelectorAll(".box");
+  rowdivs.forEach((div) => {
+    div.addEventListener("mouseover", () => {
+      let currentOpacity = Number(div.style.opacity);
+      div.style.opacity = currentOpacity + 0.1;
     });
   });
 });
