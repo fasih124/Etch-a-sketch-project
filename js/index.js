@@ -1,6 +1,21 @@
 let size = 16;
-let color = "black";
+let color = "#000000";
+// dome variables
 const container = document.querySelector(".container");
+// buttons
+const sizeBtn = document.querySelector("#size");
+const reset = document.querySelector("#Reset");
+const resetColor = document.querySelector("#resetColor");
+const randomColor = document.querySelector("#ranColor");
+
+// start functions
+
+function removeRows() {
+  const removedivs = document.querySelectorAll(".row");
+  removedivs.forEach((div) => {
+    container.removeChild(div);
+  });
+}
 
 function createGrid(num) {
   for (let i = 0; i < num; i++) {
@@ -8,6 +23,7 @@ function createGrid(num) {
     row.classList.add("row");
     for (let j = 0; j < num; j++) {
       const divs = document.createElement("div");
+      divs.classList.add("box");
       row.appendChild(divs);
       divs.addEventListener("mouseover", () => {
         divs.style.backgroundColor = color;
@@ -17,16 +33,10 @@ function createGrid(num) {
   }
 }
 
+// end functions
+
 createGrid(size);
 
-function removeRows() {
-  const removedivs = document.querySelectorAll(".row");
-  removedivs.forEach((div) => {
-    container.removeChild(div);
-  });
-}
-
-const sizeBtn = document.querySelector("#size");
 sizeBtn.addEventListener("click", () => {
   let userSize = prompt("Enter the Size of Grid(1-100): ");
   if (userSize <= 0 || userSize > 100 || userSize == String) {
@@ -38,15 +48,29 @@ sizeBtn.addEventListener("click", () => {
   createGrid(size);
 });
 
-// buttons
-
-const reset = document.querySelector("#Reset");
-const GrayScale = document.querySelector("#GrayScale");
-const randomColor = document.querySelector("#ranColor");
-
 //btn functions
 
 reset.addEventListener("click", () => {
   removeRows();
   createGrid(size);
+});
+
+randomColor.addEventListener("click", () => {
+  const rowdivs = document.querySelectorAll(".box");
+  rowdivs.forEach((div) => {
+    let randomBgColor = `hsl(${Math.floor(Math.random() * 360)},100%,50%)`;
+    div.addEventListener("mouseover", () => {
+      div.style.backgroundColor = randomBgColor;
+    });
+  });
+});
+
+resetColor.addEventListener("click", () => {
+  const rowdivs = document.querySelectorAll(".box");
+  rowdivs.forEach((div) => {
+    color = "#000000";
+    div.addEventListener("mouseover", () => {
+      div.style.backgroundColor = color;
+    });
+  });
 });
